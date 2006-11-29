@@ -1,9 +1,12 @@
-package sabacc.client;
+package sabacc.client.swing;
 
 import javax.swing.JFrame;
 
+import sabacc.server.IServer;
+
 public class Gui extends JFrame {
 	
+	protected IServer server;
 	
 	public Gui() {
 		super();
@@ -13,10 +16,4 @@ public class Gui extends JFrame {
 	protected void initialize() {
 		
 	}
-	
-	public static void main(String[] args) {
-		Gui sabacc = new Gui();
-		sabacc.show();
-	}
-
 }

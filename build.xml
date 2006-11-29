@@ -1,0 +1,13 @@
+<project name="Sabacc Online" default="" basedir=".">
+    <description>
+		Ant tasks for this project
+    </description>
+
+	<property name="classbase" location="./bin/"/>
+
+	<target name="rmi">
+		<rmic classname="sabacc.server.ServerImpl"
+			base="${classbase}"/>
+	</target>
+
+</project>

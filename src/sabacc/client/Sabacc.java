@@ -9,7 +9,7 @@ public class Sabacc {
 	 */
 	public static void main(String[] args) {
 		Gui gui = new Gui();
-		gui.show();
+		gui.setVisible(true);
 
 	}
 

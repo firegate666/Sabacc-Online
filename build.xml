@@ -4,10 +4,55 @@
     </description>
 
 	<property name="classbase" location="./bin/"/>
+	<property name="jarPath" location="C:/temp/sabacc"/>
+	<property name="jarFile" location="${jarPath}/sabacc.jar"/>
+	<property name="jarFileConfig" location="${jarPath}/config.jar"/>
+	<property name="libPath" location="lib"/>
+	<property name="clientManifest" location="./MANIFEST.MF"/>
+
+	<property name="classbase" location="./bin/"/>
 
 	<target name="rmi">
 		<rmic classname="sabacc.server.ServerImpl"
 			base="${classbase}"/>
 	</target>
+	
+	<target name="init">
+		<mkdir dir="${jarPath}"/>
+		<mkdir dir="${jarPath}/lib"/>
+		<mkdir dir="${jarPath}/config"/>
+		<copy todir="${jarPath}/config">
+    		<fileset dir="./config"/>
+		</copy>
+		<copy todir="${jarPath}/lib">
+    		<fileset dir="${libPath}"/>
+		</copy>
+	</target>
+	
+	<target name="genkey">
+		<genkey alias="sabacc_online" storepass="spueli" dname="CN=firegate.de, OU=sabacc, O=firegate.de, C=DE"/>
+	</target>
+	
+	<target name="sign" depends="init">
+		<signjar alias="sabacc_online" storepass="spueli">
+			<fileset dir="${jarPath}/lib">
+			    <include name="**/*.jar"/>
+			</fileset>
+		</signjar>
+	</target>
 
+	<target name="jar" depends="init">
+		<jar 	destfile="${jarFile}"
+				baseDir="${classbase}"
+				manifest="${clientManifest}"
+				excludes="**/ressource/**"/>
+		<jar 	destfile="${jarFileConfig}"
+				baseDir="${jarPath}/config/"
+				excludes=""/>
+		<signjar alias="sabacc_online" storepass="spueli">
+			<fileset dir="${jarPath}">
+			    <include name="*.jar"/>
+			</fileset>
+		</signjar>
+	</target>
 </project>

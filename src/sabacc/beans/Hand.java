@@ -1,5 +1,5 @@
 package sabacc.beans;
 
-public class Hand {
+public class Hand extends AbstractBean {
 
 }

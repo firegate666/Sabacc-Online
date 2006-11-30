@@ -1,5 +1,5 @@
 package sabacc.beans;
 
-public class Card {
+public class Card extends AbstractBean {
 
 }

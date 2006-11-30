@@ -1,0 +1,18 @@
+2006-11-30 10:15:42: INFO: Start registry
+2006-11-30 10:16:54: INFO: Start registry on port 1099
+2006-11-30 10:16:54: INFO: Rebind remote object //localhost:1099/ServerImpl
+2006-11-30 10:18:02: INFO: Start registry on port 1099
+2006-11-30 10:18:02: INFO: Rebind remote object //localhost:1099/ServerImpl
+2006-11-30 10:18:02: INFO: Server running
+2006-11-30 10:18:16: INFO: Start registry on port 1099
+2006-11-30 10:18:16: INFO: Rebind remote object //localhost:1099/ServerImpl
+2006-11-30 10:18:17: ERROR: Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused: connect
+2006-11-30 10:19:09: INFO: Start registry on port 1099
+2006-11-30 10:19:09: INFO: Rebind remote object //localhost:1099/ServerImpl
+2006-11-30 10:19:10: ERROR: Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused: connect
+2006-11-30 10:19:19: INFO: Start registry on port 1099
+2006-11-30 10:19:19: INFO: Rebind remote object //localhost:1099/ServerImpl
+2006-11-30 10:19:20: ERROR: Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused: connect

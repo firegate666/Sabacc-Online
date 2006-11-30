@@ -1,5 +1,5 @@
 package sabacc.beans;
 
-public class Answer {
+public class Answer extends AbstractBean {
 
 }

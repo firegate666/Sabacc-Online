@@ -50,7 +50,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer, Serializ
 	}
 	
 	public void online() throws RemoteException {
-		// TODO Auto-generated method stub
+		addlog("INFO: Server was pinged");
 	}
 
 	public Answer request(Request request) throws RemoteException {

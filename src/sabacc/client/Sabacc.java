@@ -29,7 +29,7 @@ public class Sabacc {
 	        byte[] ipAddr = addr.getAddress();
 	    
 	        // Get hostname
-	        String hostname = addr.toString();
+	        String hostname = addr.getHostAddress();
 		    return hostname;
 	    } catch (UnknownHostException e) {
 	    }
@@ -67,36 +67,9 @@ public class Sabacc {
 	 */
 	public static void main(String[] args) {
 		Sabacc sabacc = new Sabacc();
-		IServer server = sabacc.getServer();
-		try {
-			Answer answer = server.request(new Request(sabacc.getIp()));
-		} catch (RemoteException e) {
-			sabacc.addlog("ERROR: "+e.getMessage());
-		}
-		Gui gui = new Gui();
+		Gui gui = new Gui(sabacc);
 		gui.setVisible(true);
 	}
 
-	public IServer getServer() {
-		IServer server = null;
-		String serverip = ServerProperties.getString("server.rmi.ip");
-		int serverport = ServerProperties.getInt("server.rmi.port");
-		String servername = ServerProperties.getString("server.rmi.name");
-		String rurl = "//" + serverip + ":" + serverport + "/" + servername;
-		addlog("INFO: Lookup remote object "+rurl);
-		Object o;
-		try {
-			o = Naming.lookup(rurl);
-			addlog("INFO: Remote object found: "+o.getClass().toString());
-			server = (IServer) o;
-			return server;
-		} catch (MalformedURLException e) {
-			addlog("ERROR: "+e.getMessage());
-		} catch (RemoteException e) {
-			addlog("ERROR: "+e.getMessage());
-		} catch (NotBoundException e) {
-			addlog("ERROR: "+e.getMessage());
-		}
-		return null;
-	}
+
 }

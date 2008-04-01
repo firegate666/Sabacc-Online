@@ -16,6 +16,14 @@ import java.io.InputStreamReader;
 
 public class WebStartFileProvider {
 
+	protected static String DEFAULT_RESSOURCE_DIR = "resource/";
+	
+	public static void setRessourceDir(String pathname) {
+		if (!pathname.endsWith("/"))
+			pathname += "/";
+		DEFAULT_RESSOURCE_DIR = pathname;
+	}
+	
 	public static File getFile(String string) throws IOException {
 		File file = new File(string);
 		WebStartFileProvider wsfp = new WebStartFileProvider();
@@ -23,7 +31,7 @@ public class WebStartFileProvider {
 			return file;
 		} else {
 			InputStream is = wsfp.getClass().getResourceAsStream(
-					"/resource/" + file.getName());
+					"/" + DEFAULT_RESSOURCE_DIR + file.getName());
 			File returnfile = File.createTempFile("temp", file.getName());
 			BufferedWriter bw = new BufferedWriter(new FileWriter(returnfile));
 			BufferedReader in = new BufferedReader(new InputStreamReader(is));
